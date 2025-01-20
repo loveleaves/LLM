@@ -1,0 +1,16 @@
+.DS_Store
+.idea/
+.vs/
+__pycache__/
+bin/
+out
+build
+cmake-build-*/
+CMakeSettings.json
+Testing
+
+# model
+data/
+dataset/
+datasets/
+models/
