@@ -1,4 +1,1 @@
-googletest/
-re2/
-abseil-cpp/
 *.data
