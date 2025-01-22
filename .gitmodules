@@ -1,9 +1,9 @@
-[submodule "GPT2/TinyGPT/third_party/re2"]
-	path = GPT2/TinyGPT/third_party/re2
+[submodule "GPT/TinyGPT/third_party/re2"]
+	path = GPT/TinyGPT/third_party/re2
 	url = git@github.com:google/re2.git
-[submodule "GPT2/TinyGPT/third_party/abseil-cpp"]
-	path = GPT2/TinyGPT/third_party/abseil-cpp
+[submodule "GPT/TinyGPT/third_party/abseil-cpp"]
+	path = GPT/TinyGPT/third_party/abseil-cpp
 	url = git@github.com:abseil/abseil-cpp.git
-[submodule "GPT2/TinyGPT/test/googletest"]
-	path = GPT2/TinyGPT/test/googletest
+[submodule "GPT/TinyGPT/test/googletest"]
+	path = GPT/TinyGPT/test/googletest
 	url = git@github.com:google/googletest.git
