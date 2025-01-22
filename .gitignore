@@ -1,6 +1,7 @@
 .DS_Store
-.idea/
-.vs/
+.idea
+.ipynb_checkpoints/
+.vscode
 __pycache__/
 bin/
 out
@@ -10,7 +11,11 @@ CMakeSettings.json
 Testing
 
 # model
-data/
+# data/
 dataset/
 datasets/
 models/
+*.bin
+*.pkl
+*.pt
+*.pyc

@@ -62,6 +62,7 @@ def mha(x, c_attn, c_proj, n_head):  # [n_seq, n_embd] -> [n_seq, n_embd]
 
 def transformer_block(x, mlp, attn, ln_1, ln_2, n_head):  # [n_seq, n_embd] -> [n_seq, n_embd]
     # multi-head causal self attention
+    # 预归一化
     x = x + mha(layer_norm(x, **ln_1), **attn, n_head=n_head)  # [n_seq, n_embd] -> [n_seq, n_embd]
 
     # position-wise feed forward network
@@ -71,6 +72,29 @@ def transformer_block(x, mlp, attn, ln_1, ln_2, n_head):  # [n_seq, n_embd] -> [
 
 
 def gpt2(inputs, wte, wpe, blocks, ln_f, n_head):  # [n_seq] -> [n_seq, n_vocab]
+    """
+    :param inputs: [n_seq]
+    :param wte: [n_vocab, n_embd]
+    :param wpe: [n_ctx, n_embd]
+    :param blocks: [{'attn': , 'ln_1': , 'ln_2': , 'mlp': }] * n_layer
+        "blocks": [ # 124M
+            {
+                "attn": {
+                    "c_attn": {"b": [2304], "w": [768, 2304]},
+                    "c_proj": {"b": [768], "w": [768, 768]},
+                },
+                "ln_1": {"b": [768], "g": [768]},
+                "ln_2": {"b": [768], "g": [768]},
+                "mlp": {
+                    "c_fc": {"b": [3072], "w": [768, 3072]},
+                    "c_proj": {"b": [768], "w": [3072, 768]},
+                },
+            },
+            ... # repeat for n_layers
+        ]
+    :param ln_f: {"b": [n_embd], "g": [n_embd]}
+    :return: [n_seq, n_vocab]
+    """
     # token + positional embeddings
     x = wte[inputs] + wpe[range(len(inputs))]  # [n_seq] -> [n_seq, n_embd]
 

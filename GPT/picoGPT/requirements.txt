@@ -1,4 +1,5 @@
-numpy==1.24.1 # used for the actual model code/weights
+# "jax[cuda12]"
+numpy==1.25.1 # used for the actual model code/weights
 regex==2017.4.5 # used by the bpe tokenizer
 requests==2.27.1 # used to download gpt-2 files from openai
 tqdm==4.64.0 # progress bar to keep your sanity
